@@ -1,0 +1,31 @@
+{
+  "name": "student-mgmt-api",
+  "version": "1.0.0",
+  "description": "REST API for managing students with JWT authentication. Built with Express.js and MongoDB/Mongoose — includes user registration/login, protected CRUD routes for student records, and bcrypt password hashing.",
+  "homepage": "https://github.com/LMTanjil/student-mgmt-api#readme",
+  "bugs": {
+    "url": "https://github.com/LMTanjil/student-mgmt-api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LMTanjil/student-mgmt-api.git"
+  },
+  "license": "ISC",
+  "author": "Tanjil",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.9.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
