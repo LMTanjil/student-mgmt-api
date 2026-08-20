@@ -1,5 +1,6 @@
 import {User} from "../models/user.model.js";
 import {hashPassword, comparePassword} from "../utils/hashPassword.js";
+import {generateToken} from "../utils/generateToken.js";
 
 export const register = async (req, res) => {
     const {firstName, lastName, email, password} = req.body;
@@ -18,11 +19,15 @@ export const register = async (req, res) => {
             email,
             password: hashedPassword
         });
+        const token = generateToken(newUser._id);
         res.status(201).send({
             message: "User user created successfully",
-            user:{
-                userName: newUser.firstName + " " + user.lastName,
-                email: newUser.email
+            token,
+            data: {
+                id: newUser._id,
+                firstName: newUser.firstName,
+                lastName: newUser.lastName,
+                email: newUser.email,
             }
         })
         // console.log(newUser)
@@ -48,9 +53,10 @@ export const login = async (req, res) => {
         if(!isMatch){
             return res.status(400).json({message: "Invalid credentials"});
         }
-
+        const token = generateToken(user._id)
         res.status(200).json({
             message: "User login successfully",
+            token,
             data: {
                 userName: user.firstName + " " + user.lastName,
                 email: user.email
